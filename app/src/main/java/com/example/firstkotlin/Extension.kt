@@ -3,6 +3,6 @@ package com.example.firstkotlin
 import android.app.Activity
 import android.widget.Toast
 
-fun Activity.showToast(message:String){
-    Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+fun Activity.showToast(message:String,duration: Int=Toast.LENGTH_SHORT){
+    Toast.makeText(this,message,duration).show()
 }
