@@ -2,6 +2,7 @@ package com.example.firstkotlin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         // button =findViewById(R.id.button) as Button
 
         button.setOnClickListener {
-            Toast.makeText(this@MainActivity, "OK", Toast.LENGTH_LONG).show()
+            showToast("OK")
         }
 
 
@@ -38,6 +39,17 @@ class MainActivity : AppCompatActivity() {
             bundle.putString("message", message)
             intent.putExtras(bundle)
             startActivityForResult(intent, 0)
+        }
+
+        btnShare.setOnClickListener{
+            val message = etMessage.text.toString()
+            val intent=Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,message)
+            intent.type="text/plain"
+
+            startActivity(Intent.createChooser(intent,"Share to : "))
+
         }
     }
 
